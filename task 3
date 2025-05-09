@@ -1,0 +1,14 @@
+from transformers import pipeline
+
+# Load a pre-trained conversational model
+chatbot = pipeline("conversational", model="facebook/blenderbot-400M-distill")
+
+# Chat loop
+print("Chatbot: Hello! Type 'exit' to end the chat.")
+while True:
+    user_input = input("You: ")
+    if user_input.lower() == 'exit':
+        print("Chatbot: Goodbye!")
+        break
+    response = chatbot(user_input)
+    print("Chatbot:", response.generated_responses[0])
